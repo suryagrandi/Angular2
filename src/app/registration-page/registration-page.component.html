@@ -1,0 +1,65 @@
+<h1 style="text-align: center;">Register</h1>
+<div class="alert alert-danger" *ngIf="errorMsg;else next">{{errorMsg}}</div>
+<ng-template #next>
+    <div class="container">
+        <form [formGroup]="ngForm" (ngSubmit)="enroll()" class="myDiv">
+            <div class="form-group">
+                <label>FirstName</label>
+                <input type="text" class="form-control" formControlName="FirstName">
+                <small class="text-danger" *ngIf="FirstName.invalid && FirstName.touched">FirstName is required</small>
+            </div>
+            <div class="form-group">
+                <label>MiddleName</label>
+                <input type="text" class="form-control" formControlName="MiddleName">
+                <small class="text-danger" *ngIf="MiddleName.invalid && MiddleName.touched">MiddleName is
+                    required</small>
+            </div>
+            <div class="form-group">
+                <label>LastName</label>
+                <input type="text" class="form-control" formControlName="LastName">
+                <small class="text-danger" *ngIf="LastName.invalid && LastName.touched">LastName is required</small>
+            </div>
+            <div class="form-group">
+                <label>EmailId</label>
+                <input type="text" class="form-control" formControlName="EmailId">
+                <small class="text-danger" *ngIf="EmailId.invalid && EmailId.touched"></small>
+                <small class="text-danger" *ngIf="EmailId.errors.email">EmailId is required</small>
+            </div>
+            <div class="form-group">
+                <label>MobileNo</label>
+                <input type="text" class="form-control" formControlName="MobileNo">
+                <!-- <small class="text-danger" *ngIf="MobileNo.invalid && MobileNo.touched"></small>
+                <small class="text-danger" *ngIf="MobileNo.errors.number">MobileNo is required</small> -->
+            </div>
+
+
+            <div class="form-group">
+                <label>UserName</label>
+                <input type="text" class="form-control" formControlName="UserName">
+                <small class="text-danger" *ngIf="UserName.invalid && UserName.touched">UserName is required</small>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="Password">
+                <small class="text-danger" *ngIf="Password.invalid && Password.touched">Password must have special
+                    keys</small>
+            </div>
+            <div class="form-group">
+                <label>ConfirmPassword</label>
+                <input type="password" class="form-control" formControlName="ConfirmPassword">
+                <small class="text-danger" *ngIf="ConfirmPassword.invalid && ConfirmPassword.touched">ConfirmPassword
+                    and Password must be same</small>
+                <small class="text-danger"
+                    *ngIf="ngForm.get(['Password']).value != ngForm.get(['ConfirmPassword']).value">ConfirmPassword
+                    and Password must be same</small>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="Register">
+
+
+                <a href="./home-page">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</ng-template>

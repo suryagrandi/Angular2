@@ -1,0 +1,46 @@
+
+<div>
+    <h1 style="text-align: center;">ResetPassword</h1>
+    <div class="alert alert-danger" *ngIf="errorMsg;else next">{{errorMsg}}</div> 
+    <ng-template #next>
+        <div class="container">
+        <form [formGroup]="ngForm" (ngSubmit)="enroll()" class="myDiv">
+          
+            <div class="form-group">
+                <label>EmailId</label>
+                <input type="text" class="form-control" formControlName="EmailId">
+                <small class="text-danger" *ngIf="EmailId.invalid && EmailId.touched ">EmailId is required</small> 
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" class="form-control" formControlName="Password">
+                <small class="text-danger" *ngIf="Password.invalid && Password.touched ">Password is required &
+                    contanins minimum 6 characters</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Confirm Password:</label>
+                <input type="password" class="form-control" formControlName="ConfirmPassword">
+                <small class="text-danger" *ngIf="ConfirmPassword.invalid  && ConfirmPassword.touched">ConfirmPassword
+                    is required</small>
+                <small class="text-danger"
+                    *ngIf="ngForm.get(['Password']).value != ngForm.get(['ConfirmPassword']).value">ConfirmPassword must
+                    be same as Password field</small>
+            </div>
+            <div class="form-group">
+                <label>TokenId</label>
+                <input type="text" class="form-control" formControlName="Token">
+                <small class="text-danger" *ngIf="Token.invalid && Token.touched ">Token is required</small> 
+            </div>
+                <div>
+                    <input type="submit"  class="btn btn-primary" value="submit">
+                    <a href="/login" style="padding-left: 50px;">cancel</a>
+                </div>              
+       </form>
+    </div>
+    </ng-template>
+    <br><br>
+</div>
+
+
+
